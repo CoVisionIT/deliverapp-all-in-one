@@ -6,9 +6,13 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import sun.misc.BASE64Encoder;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +38,13 @@ public class QRUtil {
             }
         }
         return image;
+    }
+
+    public static byte[] createQrPng(DespatchAdvice despatchAdvice, int size) throws WriterException, IOException {
+        BufferedImage bufferedImage = createQrImage(despatchAdvice, size);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "PNG", output);
+        return output.toByteArray();
     }
 
 }
