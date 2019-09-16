@@ -30,7 +30,7 @@ public class QRUtil {
         hints.put(EncodeHintType.CHARACTER_SET, ISO_8859_1.name());
         BitMatrix bitMatrix = writer.encode(qrString, BarcodeFormat.QR_CODE, size, size, hints);
 
-        BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_USHORT_565_RGB);
+        BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_BYTE_INDEXED);
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 Color color = bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE;

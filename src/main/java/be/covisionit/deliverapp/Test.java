@@ -16,8 +16,9 @@ public class Test {
 
         BufferedImage qrImage = QRUtil.createQrImage(despatchAdvice, 300);
 
-        ImageIO.write(qrImage, "PNG", new File("out.png"));
-        System.out.println("QR Image written to 'out.png'");
+        String filename = "out.bmp";
+        ImageIO.write(qrImage, "BMP", new File(filename));
+        System.out.println("QR Image written to '" + filename + "'");
 
         // BASE 64 encode / decode example:
         byte[] bytes = despatchAdvice.toByteArray();
