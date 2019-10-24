@@ -2,8 +2,6 @@ package be.covisionit.deliverapp;
 
 import be.covisionit.deliverapp.proto.DespatchAdvice;
 import com.google.zxing.WriterException;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -20,22 +18,18 @@ public class Test {
         ImageIO.write(qrImage, "BMP", new File(filename));
         System.out.println("QR Image written to '" + filename + "'");
 
-        // BASE 64 encode / decode example:
+        // Convert bytes to HEX string:
         byte[] bytes = despatchAdvice.toByteArray();
-        System.out.print("original: ");
+        System.out.println("HEX: ");
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
         for (byte aByte : bytes) {
-            System.out.print(aByte + " ");
+            sb.append(String.format("%02X", aByte)).append(" ");
+            count++;
+            if (count % 8 == 0) {
+                sb.append("\n");
+            }
         }
-        System.out.println();
-
-        String qrBase64String = new BASE64Encoder().encode(bytes);
-        System.out.println("base 64 string: " + qrBase64String);
-
-        System.out.print("after decode: ");
-        byte[] decodedBytes = new BASE64Decoder().decodeBuffer(qrBase64String);
-        for (byte aByte : decodedBytes) {
-            System.out.print(aByte + " ");
-        }
-        System.out.println();
+        System.out.println(sb.toString());
     }
 }

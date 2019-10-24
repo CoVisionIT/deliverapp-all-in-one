@@ -3,9 +3,10 @@
   <groupId>be.covisionit</groupId>
   <artifactId>deliverapp-all-in-one</artifactId>
   <versioning>
+    <release>0.0.1</release>
     <versions>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.0.1</version>
     </versions>
-    <lastUpdated>20190916105359</lastUpdated>
+    <lastUpdated>20191024215526</lastUpdated>
   </versioning>
 </metadata>
